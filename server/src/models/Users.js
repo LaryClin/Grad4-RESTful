@@ -3,10 +3,14 @@ const { Schema } = mongoose;
 
 
 const userSchema = new Schema({
-    lastName : String , 
+    lastName : String, 
     firstName: String,
-    email: { type:String,  required:'un nom est obligatoire:)' },
-});
+    email: { type:String,  required:'un nom est obligatoire:)', unique:true },
+    password:{type:String },
+    roles:[Schema.Types.ObjectId]
+},
+{ timestamps: true }
+);
 
 const userModel = mongoose.model('users',userSchema)
 
